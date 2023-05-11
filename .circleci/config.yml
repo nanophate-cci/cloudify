@@ -1,0 +1,19 @@
+version: 2.1
+jobs:
+  build:
+    machine:
+      image: ubuntu-2004:202201-02
+    steps:
+      - checkout
+      - run: pyenv install 3.6.5
+      - run: pyenv global 3.6.5
+      - run: pip install -U pip===20.3.3
+      - run: pip install cloudify
+      - run: ls /opt/circleci/.pyenv/versions/3.6.5/bin/
+      - run: uname -a
+
+workflows:
+  version: 2
+  nend-build:
+    jobs:
+      - build
